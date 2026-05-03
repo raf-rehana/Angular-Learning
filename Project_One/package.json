@@ -1,12 +1,13 @@
 {
-  "name": "jee-angular-69",
+  "name": "project-one",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server": "json-server --watch db.json -- port 3000"
   },
   "private": true,
   "packageManager": "npm@11.12.1",
@@ -17,8 +18,10 @@
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
+  
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
+    
   },
   "devDependencies": {
     "@angular/build": "^21.2.9",
