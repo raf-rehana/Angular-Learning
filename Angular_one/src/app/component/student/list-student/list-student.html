@@ -1,24 +1,44 @@
-<thead>
-<tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Fee</th>
-    <th>Action</th>
-</tr>
-</thead>
-<tbody>
-    <tr *ngFor="let s of students">
-        <td>{{s.id}}</td>
-        <td>{{s.name}}</td>
-        <td>{{s.email}}</td>
-        <td>{{s.phone}}</td>
-        <td>{{s.fee}}</td>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Student List</h2>
+    <a routerLink="/student/save" class="btn btn-primary">+ Add Student</a>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center my-3">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <table class="table table-bordered table-hover" *ngIf="!isLoading">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Fee</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of studentList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.phone }}</td>
+        <td>{{ s.fee }}</td>
         <td>
-            <button class="btn btn-danger mx-3">Edit</button>
-            <button class="btn btn-danger mx-3">Delete</button>
+          <a [routerLink]="['/student/edit', s.id]" class="btn btn-warning btn-sm me-2">Edit</a>
+          <button (click)="deleteStudent(s.id)" class="btn btn-danger btn-sm">Delete</button>
         </td>
-    </tr>
-</tbody>
+      </tr>
 
+      <!-- Empty State -->
+      <tr *ngIf="studentList.length === 0">
+        <td colspan="6" class="text-center text-muted">No students found.</td>
+      </tr>
 
+    </tbody>
+  </table>
+</div>

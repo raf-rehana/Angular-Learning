@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4>{{ isEditMode ? 'Edit Department' : 'Add Department' }}</h4>
+        </div>
+        <div class="card-body">
+
+          <div *ngIf="isLoading" class="text-center">
+            <div class="spinner-border" role="status"></div>
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+          <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+          <form #deptForm="ngForm" (ngSubmit)="save()">
+
+            <!-- Name -->
+            <div class="mb-3">
+              <label class="form-label">Department Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="department.name"
+                required
+                #name="ngModel"
+                placeholder="Enter department name"
+              />
+              <small class="text-danger" *ngIf="name.invalid && name.touched">
+                Name is required.
+              </small>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="department.email"
+                required
+                email
+                #email="ngModel"
+                placeholder="Enter email"
+              />
+              <small class="text-danger" *ngIf="email.invalid && email.touched">
+                Valid email is required.
+              </small>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-success" [disabled]="deptForm.invalid || isLoading">
+                {{ isEditMode ? 'Update' : 'Save' }}
+              </button>
+              <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+              <a routerLink="/department" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

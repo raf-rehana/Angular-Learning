@@ -1,16 +1,19 @@
 {
-"student": [
+  "$schema": "./node_modules/json-server/schema.json",
+  "student": [
     {
-        "id": "1",
-        "name": "Rafiaah",
-        "email": "rafiaah@gmail.com",
-        "phone": "0171200000",
-        "fee": 8000
+      "id": "1",
+      "name": "Rafiaah",
+      "email": "rafiaah@gmail.com",
+      "phone": "0171200000",
+      "fee": 8000
     }
-],
-
-"$schema": "./node_modules/json-server/schema.json"
-
-
+  ],
+  "department": [
+    {
+      "id": "1",
+      "name": "Accounting",
+      "email": "acc@gmail.com"
+    }
+  ]
 }
-

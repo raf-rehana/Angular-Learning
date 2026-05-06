@@ -1,1 +1,77 @@
-<p>add-edit-student works!</p>
+<div>
+  <h2>{{ isEditMode ? 'Edit Student' : 'Add Student' }}</h2>
+
+  <p *ngIf="isLoading">Loading...</p>
+  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+  <p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
+
+  <form #studentForm="ngForm" (ngSubmit)="save()">
+
+    <!-- Name -->
+    <div>
+      <label>Name</label>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="student.name"
+        required
+        #name="ngModel"
+        placeholder="Enter student name"
+      />
+      <small *ngIf="name.invalid && name.touched">Name is required.</small>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="student.email"
+        required
+        email
+        #email="ngModel"
+        placeholder="Enter email"
+      />
+      <small *ngIf="email.invalid && email.touched">Valid email is required.</small>
+    </div>
+
+    <!-- Phone -->
+    <div>
+      <label>Phone</label>
+      <input
+        type="text"
+        name="phone"
+        [(ngModel)]="student.phone"
+        required
+        #phone="ngModel"
+        placeholder="Enter phone number"
+      />
+      <small *ngIf="phone.invalid && phone.touched">Phone is required.</small>
+    </div>
+
+    <!-- Fee -->
+    <div>
+      <label>Fee</label>
+      <input
+        type="number"
+        name="fee"
+        [(ngModel)]="student.fee"
+        required
+        #fee="ngModel"
+        placeholder="Enter fee amount"
+      />
+      <small *ngIf="fee.invalid && fee.touched">Fee is required.</small>
+    </div>
+
+    <!-- Buttons -->
+    <div>
+      <button type="submit" [disabled]="studentForm.invalid || isLoading">
+        {{ isEditMode ? 'Update' : 'Save' }}
+      </button>
+      <button type="button" (click)="reset()">Reset</button>
+      <a routerLink="/student">Cancel</a>
+    </div>
+
+  </form>
+</div>

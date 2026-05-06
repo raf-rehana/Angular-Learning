@@ -2,32 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { StudentService } from '../../../services/student.service';
-import { StudentModel } from '../../model/student.model';
+import { DepartmentService } from '../../services/department.service';
+import { DepartmentModel } from '../../model/department.model';
 
 @Component({
-  selector: 'app-add-edit-student',
+  selector: 'app-department-form',
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './add-edit-student.html',
-  styleUrl: './add-edit-student.css',
+  templateUrl: './department-form.html',
+  styleUrl: './department-form.css',
 })
-export class AddEditStudent implements OnInit {
+export class DepartmentForm implements OnInit {
 
   isEditMode: boolean = false;
   isLoading: boolean = false;
   errorMessage: string = '';
   successMessage: string = '';
 
-  student: StudentModel = {
+  department: DepartmentModel = {
     id: '',
     name: '',
-    email: '',
-    phone: '',
-    fee: 0
+    email: ''
   };
 
   constructor(
-    private studentService: StudentService,
+    private departmentService: DepartmentService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -36,19 +34,19 @@ export class AddEditStudent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditMode = true;
-      this.loadStudent(id);
+      this.loadDepartment(id);
     }
   }
 
-  loadStudent(id: string): void {
+  loadDepartment(id: string): void {
     this.isLoading = true;
-    this.studentService.getByID(id).subscribe({
+    this.departmentService.getByID(id).subscribe({
       next: (data) => {
-        this.student = data;
+        this.department = data;
         this.isLoading = false;
       },
       error: () => {
-        this.errorMessage = 'Failed to load student.';
+        this.errorMessage = 'Failed to load department.';
         this.isLoading = false;
       }
     });
@@ -64,14 +62,14 @@ export class AddEditStudent implements OnInit {
 
   create(): void {
     this.isLoading = true;
-    this.studentService.saveStudent(this.student).subscribe({
+    this.departmentService.saveDepartment(this.department).subscribe({
       next: () => {
-        this.successMessage = 'Student created successfully!';
+        this.successMessage = 'Department created successfully!';
         this.isLoading = false;
-        this.router.navigate(['/student']);
+        this.router.navigate(['/department']);
       },
       error: () => {
-        this.errorMessage = 'Failed to create student.';
+        this.errorMessage = 'Failed to create department.';
         this.isLoading = false;
       }
     });
@@ -79,21 +77,21 @@ export class AddEditStudent implements OnInit {
 
   update(): void {
     this.isLoading = true;
-    this.studentService.updateStudent(this.student).subscribe({
+    this.departmentService.updateDepartment(this.department).subscribe({
       next: () => {
-        this.successMessage = 'Student updated successfully!';
+        this.successMessage = 'Department updated successfully!';
         this.isLoading = false;
-        this.router.navigate(['/student']);
+        this.router.navigate(['/department']);
       },
       error: () => {
-        this.errorMessage = 'Failed to update student.';
+        this.errorMessage = 'Failed to update department.';
         this.isLoading = false;
       }
     });
   }
 
   reset(): void {
-    this.student = { id: '', name: '', email: '', phone: '', fee: 0 };
+    this.department = { id: '', name: '', email: '' };
     this.errorMessage = '';
     this.successMessage = '';
   }
