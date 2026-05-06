@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DepartmentService } from '../../services/department.service';
 import { DepartmentModel } from '../../model/department.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-department',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './department.html',
   styleUrl: './department.css',
 })
