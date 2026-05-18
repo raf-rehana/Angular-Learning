@@ -1,5 +1,0 @@
-$kind: http-request
-name: save
-url: ""
-method: GET
-order: 2761464676737982
