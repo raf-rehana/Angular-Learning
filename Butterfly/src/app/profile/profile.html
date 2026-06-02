@@ -1,1 +1,31 @@
-<p>profile works!</p>
+<div class="container py-5">
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+      <div class="card shadow-lg border-0 text-center p-4">
+
+        <!-- IMAGE -->
+        <img [src]="image"
+             class="rounded-circle border mb-3"
+             width="140" height="140">
+
+        <input type="file"
+               class="form-control mb-3"
+               (change)="onImageChange($event)">
+
+        <!-- DETAILS -->
+        <h4>{{ user.firstName }} {{ user.lastName }}</h4>
+        <p class="text-muted">{{ user.email }}</p>
+        <p class="text-muted">{{ user.phone }}</p>
+
+        <button class="btn btn-outline-primary mt-3">
+          Edit Profile
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

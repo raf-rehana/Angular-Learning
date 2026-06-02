@@ -16,6 +16,15 @@ export class Login {
   password = '';
   message = '';
 
+  user = {
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
+
   constructor(private http: HttpClient, private router: Router) {}
 
   login() {
@@ -23,26 +32,36 @@ export class Login {
       username: this.username,
       password: this.password
     };
+
     this.http.post('http://localhost:8080/api/login', data, { responseType: 'text' })
-    .subscribe({next: (response) => {
-      this.message = response;
-      if (response === 'success') {
-          // store login state (optional)
-          localStorage.setItem('user', this.username);
+      .subscribe(
+        (response) => {
+          this.message = response;
 
-          // redirect to admin dashboard
-          this.router.navigate(['/profile']);
-        } else {
-          this.message = 'Invalid username or password';
+          if (response === 'success') {
+            localStorage.setItem('user', this.username);
+            this.router.navigate(['/profile']);
+          } else {
+            this.message = 'Invalid username or password';
+          }
+        },
+        (error) => {
+          console.error(error);
+          this.message = 'Server Error';
         }
-
-      },
-    },
-
-      error: (error) => {console.error(error);
-        this.message = 'Server Error';}
-    });
-
+      );
   }
-  
+
+  createAccount() {
+    this.http.post('http://localhost:8080/api/register', this.user, { responseType: 'text' })
+      .subscribe(
+        (res) => {
+          console.log(res);
+          this.router.navigate(['/login']);
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
+  }
 }

@@ -1,0 +1,14 @@
+.bg-lavender {
+  background-color: #b57edc;
+}
+
+.btn-lavender {
+  background-color: #b57edc;
+  color: white;
+  border: none;
+}
+
+.btn-lavender:hover {
+  background-color: #9b63c7;
+  color: white;
+}
