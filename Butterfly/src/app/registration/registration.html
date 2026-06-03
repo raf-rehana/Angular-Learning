@@ -1,91 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-3 text-lavender" routerLink="/">🦋Butterfly</a>
+    <div class="d-flex gap-2">
+      <a routerLink="/products" class="btn btn-lavender px-4 rounded-pill"> Products </a>
+      <a routerLink="/login" class="btn btn-outline-lavender px-4 rounded-pill"> Login </a>
+    </div>
+  </div>
+</nav>
 <div class="container py-5">
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10">
 
       <div class="card border-0 shadow-lg">
-
-        <!-- Header -->
         <div class="card-header bg-lavender text-white text-center py-4">
-          <h2 class="fw-bold mb-1">Create Account</h2>
-          <p class="mb-0">Join our community today</p>
+          <h2 class="fw-bold mb-1">Create Account</h2> <p class="mb-0">Join our community today</p>
         </div>
 
-        <!-- Body -->
         <div class="card-body p-4">
-
-          <form (ngSubmit)="onRegister(fn.value, ln.value, ph.value, em.value, pw.value, cpw.value)">
-
+          <form>
             <div class="row g-3">
-
-              <!-- First Name -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">First Name</label>
-                <input #fn name="firstName"
-                       type="text"
-                       class="form-control form-control-lg"
-                       placeholder="Enter first name">
+                <input #fn name="firstName" type="text" class="form-control form-control-lg" placeholder="Enter First name">
               </div>
-
-              <!-- Last Name -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Last Name</label>
-                <input #ln name="lastName"
-                       type="text"
-                       class="form-control form-control-lg"
-                       placeholder="Enter last name">
+                <input #ln name="lastName" type="text" class="form-control form-control-lg" placeholder="Enter last name">
               </div>
 
-              <!-- Phone -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Phone Number</label>
-                <input #ph name="phone"
-                       type="text"
-                       class="form-control form-control-lg"
-                       placeholder="Enter phone number">
+                <input #ph name="phone" type="text"  class="form-control form-control-lg"  placeholder="Enter Phone number">
               </div>
 
               <!-- Email -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Email</label>
-                <input #em name="email"
-                       type="email"
-                       class="form-control form-control-lg"
-                       placeholder="Enter email">
+                <input #em name="email"  type="email" class="form-control form-control-lg" placeholder="Enter email">
               </div>
 
-              <!-- Password -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Password</label>
-                <input #pw name="password"
-                       type="password"
-                       class="form-control form-control-lg"
-                       placeholder="Enter password">
+                <input #pw name="password" type="password" class="form-control form-control-lg" placeholder="Enter password">
               </div>
-
-              <!-- Confirm Password -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Confirm Password</label>
-                <input #cpw name="confirmPassword"
-                       type="password"
-                       class="form-control form-control-lg"
-                       placeholder="Re-enter password">
-              </div>
+                <input #cpw name="confirmPassword" type="password"  class="form-control form-control-lg"
+                       placeholder="Re-enter password"> </div>
 
-              <!-- Submit -->
               <div class="col-12 mt-4">
-                <button type="submit"
-                        class="btn btn-lavender btn-lg w-100 fw-bold">
-                  Create Account
-                </button>
+                <button type="button" (click)="register()" class="btn btn-lavender btn-lg w-100 fw-bold">Create Account</button>
               </div>
-
             </div>
-
           </form>
-
         </div>
       </div>
-
     </div>
   </div>
 </div>

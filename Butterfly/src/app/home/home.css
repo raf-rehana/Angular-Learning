@@ -1,15 +1,79 @@
-/* home.css */
+.text-lavender {
+    color: #9b7be8;
+}
+
 
 .btn-lavender {
-  background-color: #7c5cbf;
-  color: #fff;
-  border: none;
-}
-.btn-lavender:hover {
-  background-color: #5a3f99;
-  color: #fff;
+    background: #9b7be8;
+    color: white;
+    border: none;
 }
 
-.btn-lavender-text {
-  color: #7c5cbf;
+
+.btn-lavender:hover {
+    background: #8062d6;
+    color: white;
+}
+
+
+
+.btn-outline-lavender {
+
+    color:#9b7be8;
+    border:2px solid #9b7be8;
+
+}
+
+
+.btn-outline-lavender:hover {
+
+    background:#9b7be8;
+    color:white;
+
+}
+
+
+
+.hero-section {
+
+    background: linear-gradient(
+      135deg,
+      #f8f4ff,
+      #ffffff
+    );
+
+}
+
+
+
+.hero-card {
+
+    background:#f1eaff;
+    font-size:40px;
+
+}
+
+
+
+.lavender-card {
+
+    background:#f5efff;
+    transition:.3s;
+
+}
+
+
+.lavender-card:hover {
+
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px #d8c8ff;
+
+}
+
+
+
+.footer-lavender {
+
+    background:#f1eaff;
+
 }

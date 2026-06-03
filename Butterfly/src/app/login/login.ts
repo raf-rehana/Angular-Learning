@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -22,21 +22,20 @@ export class Login {
       params: { username, password },
       responseType: 'text' 
     })
-      .subscribe(
-        (response) => {
-          console.log('Login response received:', response);
-          if (response === 'success') {
-            localStorage.setItem('user', username);
-            this.router.navigate(['/profile']);
-          } else {
-            alert('Invalid username or password');
-          }
-        },
-        (error) => {
-          console.error('Server error during login:', error);
-          alert('Server Error');
+  .subscribe({
+     next: (response) => {
+        if (response === 'success') {
+          localStorage.setItem('user', username);
+          this.router.navigate(['/profile']);
+        } else {
+          alert('Invalid username or password');
         }
-      );
-  }
+      },
 
+      error: (error) => {
+        console.error(error);
+        alert('Server Error');
+      }
+    });
+  }
 }

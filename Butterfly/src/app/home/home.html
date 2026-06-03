@@ -1,78 +1,99 @@
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
   <div class="container">
-
-    <a class="navbar-brand fw-bold fs-4" routerLink="/">
-      Butterfly
-    </a>
-
-    <div class="d-flex gap-3">
-      <a routerLink="/products" class="btn btn-outline-secondary px-4">Products</a>
-      <a routerLink="/login" class="btn btn-outline-secondary px-4">Login</a>
-      <a routerLink="/registration" class="btn btn-outline-secondary px-4">Register</a>
+    <a class="navbar-brand fw-bold fs-3 text-lavender" routerLink="/"> 🦋 Butterfly </a>
+    <div class="d-flex gap-2">
+      <a routerLink="/products" class="btn btn-lavender px-4 rounded-pill"> Products </a>
+      <a routerLink="/login" class="btn btn-outline-lavender px-4 rounded-pill"> Login </a>
+      <a routerLink="/registration" class="btn btn-lavender px-4 rounded-pill"> Register </a>
     </div>
-
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="container py-5 text-center mt-4">
+<section class="hero-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="text-center p-5">
+        <h1 class="display-4 fw-bold">
+          Glow Naturally with
+          <span class="text-lavender"> Butterfly </span>
+        </h1>
 
-  <h1 class="display-5 fw-bold mb-3">
-    Butterfly
-  </h1>
-
-  <p class="lead text-muted mb-5">
-    Premium cosmetics for skincare and beauty essentials.
-  </p>
-
-  <a routerLink="/products" class="btn btn-outline-secondary px-4">
-    Shop Now
-  </a>
-
-</div>
-
-<!-- ABOUT SECTION -->
-<div class="container py-5">
-
-  <div class="row">
-
-    <div class="col-md-4 mb-4">
-      <h5 class="fw-bold">About</h5>
-      <p class="text-muted">
-        Butterfly is a modern cosmetic brand offering trusted skincare and beauty products.
-      </p>
+        <p class="lead text-muted mt-3">  Discover premium skincare, beauty essentials and cosmetics designed to make your everyday routine special.</p>
+        <div class="mt-4">
+          <a routerLink="/products" class="btn btn-lavender px-5 py-2 rounded-pill me-2">Shop Now</a>
+          <a routerLink="/registration" class="btn btn-outline-lavender px-5 py-2 rounded-pill">Join Us</a>
+        </div>
+      </div>
+      <div class=" text-center">
+        <div class="hero-card p-5 shadow rounded-4">
+          <h2 class="text-lavender"> Beauty Collection</h2>
+          <p class="text-muted">Skincare • Makeup • Self Care</p>🦋
+        </div>
+      </div>
     </div>
-
-    <div class="col-md-4 mb-4">
-      <h5 class="fw-bold">Mission</h5>
-      <p class="text-muted">
-        To provide safe and effective beauty products for everyday use.
-      </p>
-    </div>
-
-    <div class="col-md-4 mb-4">
-      <h5 class="fw-bold">Vision</h5>
-      <p class="text-muted">
-        To become a trusted global beauty brand.
-      </p>
-    </div>
-
   </div>
+</section>
 
-</div>
+<section class="container py-5">
+  <h2 class="text-center fw-bold mb-5">Why Choose Butterfly?</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-4 text-center rounded-4">
+        <h1>🌿</h1>
+        <h5 class="fw-bold">Natural Care</h5>
+        <p class="text-muted">Products made with skin-friendly ingredients.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-4 text-center rounded-4">
+        <h1>💎</h1>
+        <h5 class="fw-bold">Premium Quality</h5>
+        <p class="text-muted">Carefully selected beauty products.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-4 text-center rounded-4">
+        <h1>💜</h1>
+        <h5 class="fw-bold">Trusted Beauty</h5>
+        <p class="text-muted">Designed for your daily confidence.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- FOOTER -->
-<footer class="bg-light border-top mt-5">
-  <div class="container py-4 text-center">
+<section class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="lavender-card p-4 rounded-4">
+        <h4 class="fw-bold">About Us</h4>
+        <p>Butterfly is a modern cosmetic brand creating skincare and beauty essentials for everyone. </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="lavender-card p-4 rounded-4">
+        <h4 class="fw-bold">Our Mission</h4>
+        <p>To provide safe, effective and affordable beauty products.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="lavender-card p-4 rounded-4">
+        <h4 class="fw-bold">Our Vision</h4>
+        <p>To become a trusted beauty brand worldwide and Provide Original cosmetics Items.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <h6 class="fw-bold mb-2">
-      Butterfly
-    </h6>
-
-    <small class="text-muted">
-      © 2026 Butterfly. All rights reserved.
-    </small>
-
+<footer class="btn-lavender mt-5">
+  <div class="container py-5 text-center">
+    <h3 class="fw-bold">🦋 Butterfly</h3>
+    <p>Premium skincare and beauty products.</p>
+    <div class="mb-3">
+      <a class="mx-2 text-dark">Facebook</a>
+      <a class="mx-2 text-dark">Instagram</a>
+      <a class="mx-2 text-dark">Contact</a>
+    </div>
+    <small> © 2026 Butterfly. All rights reserved. </small>
   </div>
 </footer>

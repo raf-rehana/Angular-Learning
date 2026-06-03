@@ -1,68 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-3 text-lavender" routerLink="/">🦋Butterfly</a>
+    <div class="d-flex gap-2">
+      <a routerLink="/login" class="btn btn-outline-lavender px-4 rounded-pill"> Login </a>
+      <a routerLink="/registration" class="btn btn-lavender px-4 rounded-pill"> Register </a>
+    </div>
+  </div>
+</nav>
 <div class="container py-5">
-
-  <!-- Heading -->
-  <div class="mb-4">
-    <h3 class="fw-bold">All Products</h3>
-    <p class="text-muted mb-0">
-      {{ products.length }} products available
-    </p>
+ <div class="mb-4"><h3 class="fw-bold">All Products</h3>
+    <p class="text-muted mb-0">{{ products.length }} products available</p>
   </div>
 
-  <!-- Product Grid -->
   <div class="row g-4">
-
     <div class="col-sm-6 col-xl-4" *ngFor="let product of products">
-
       <div class="card h-100 border">
-
-        <!-- Product Image -->
         <div class="position-relative">
-          <img
-            [src]="product.image"
-            [alt]="product.name"
-            class="card-img-top"
-            style="height:200px; object-fit:cover;"
-            onerror="this.src='https://placehold.co/300x200/ede9f6/7c5cbf?text=Product'"
-          />
-          <span *ngIf="product.badge" class="position-absolute top-0 start-0 m-2 badge" style="background-color: #7c5cbf; color: white;">
+          <img [src]="product.image" [alt]="product.name" class="card-img-top"style="height:200px; object-fit:cover; "onerror="this.src='https://placehold.co/300x200/ede9f6/7c5cbf?text=Product'"          />
+          <span class="position-absolute top-0 start-0 m-2 badge" style="background-color: #7c5cbf; color: white;">
             {{ product.badge }}
           </span>
         </div>
 
         <!-- Card Body -->
         <div class="card-body">
-
-          <small class="text-muted">
-            {{ product.category }}
-          </small>
-
-          <h6 class="fw-semibold mt-1 mb-1">
-            {{ product.name }}
-          </h6>
-
-          <p class="text-muted small mb-2">
-            {{ product.description }}
-          </p>
-
+          <small class="text-muted">{{ product.category }}</small>
+          <h6 class="fw-semibold mt-1 mb-1">{{ product.name }}</h6>
+          <p class="text-muted small mb-2">{{ product.description }}</p>
           <div class="d-flex justify-content-between align-items-center mt-3">
-
-            <span class="fw-bold fs-5 btn-lavender-text">
-              ${{ product.price }}
-            </span>
-
-            <button
-              class="btn btn-sm btn-lavender"
-              (click)="addToCart(product)">
-              Add to Cart
-            </button>
-
+            <span class="fw-bold fs-5 btn-lavender-text">${{ product.price }}</span>
+            <button class="btn btn-sm btn-lavender"(click)="addToCart(product)">Add to Cart</button>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 </div>
