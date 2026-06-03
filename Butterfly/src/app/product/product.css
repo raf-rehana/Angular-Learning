@@ -1,0 +1,15 @@
+/* product.css */
+
+.btn-lavender {
+  background-color: #7c5cbf;
+  color: #fff;
+  border: none;
+}
+.btn-lavender:hover {
+  background-color: #5a3f99;
+  color: #fff;
+}
+
+.btn-lavender-text {
+  color: #7c5cbf;
+}

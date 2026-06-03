@@ -1,64 +1,52 @@
 <div class="container py-5">
   <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-10">
+    <div class="col-md-5">
 
       <div class="card border-0 shadow-lg">
 
+        <!-- Header -->
         <div class="card-header bg-lavender text-white text-center py-4">
-          <h2 class="fw-bold mb-1">Create Account</h2>
-          <p class="mb-0">Join our community today</p>
+          <h2 class="fw-bold mb-1">Welcome Back</h2>
+          <p class="mb-0">Login to your account</p>
         </div>
 
+        <!-- Body -->
         <div class="card-body p-4">
 
-          <form (ngSubmit)="createAccount()">
+          <!-- Plain HTML form — no (ngSubmit), no [(ngModel)] -->
+          <!-- No action/method because login needs a redirect via Angular -->
+          <form>
 
-            <div class="row g-3">
-
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">First Name</label>
-                <input [(ngModel)]="user.firstName" name="firstName"
-                       type="text" class="form-control form-control-lg">
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Last Name</label>
-                <input [(ngModel)]="user.lastName" name="lastName"
-                       type="text" class="form-control form-control-lg">
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Phone Number</label>
-                <input [(ngModel)]="user.phone" name="phone"
-                       type="text" class="form-control form-control-lg">
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Email</label>
-                <input [(ngModel)]="user.email" name="email"
-                       type="email" class="form-control form-control-lg">
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Password</label>
-                <input [(ngModel)]="user.password" name="password"
-                       type="password" class="form-control form-control-lg">
-              </div>
-
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Confirm Password</label>
-                <input [(ngModel)]="user.confirmPassword" name="confirmPassword"
-                       type="password" class="form-control form-control-lg">
-              </div>
-
-              <div class="col-12 mt-4">
-                <button type="submit"
-                        class="btn btn-lavender btn-lg w-100 fw-bold">
-                  Create Account
-                </button>
-              </div>
-
+            <!-- Username -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Username</label>
+              <input id="username"
+                     type="text"
+                     class="form-control form-control-lg"
+                     placeholder="Enter username">
             </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Password</label>
+              <input id="password"
+                     type="password"
+                     class="form-control form-control-lg"
+                     placeholder="Enter password">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="button"
+                    (click)="login()"
+                    class="btn btn-lavender btn-lg w-100 fw-bold">
+              Login
+            </button>
+
+            <!-- Register Link -->
+            <p class="text-center mt-3 mb-0">
+              Don't have an account?
+              <a routerLink="/register">Create one</a>
+            </p>
 
           </form>
 
