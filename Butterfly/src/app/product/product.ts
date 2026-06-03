@@ -21,7 +21,7 @@ export class Product implements OnInit {
   maxPrice = 200;
 
   // Category list for sidebar
-  categoryList = ['All', 'Home & Living', 'Fashion', 'Beauty & Care', 'Electronics'];
+  categoryList = ['All', 'Moisturizer', 'Lotion', 'Shampoo', 'Facewash', 'Lipstick', 'Foundation'];
 
   // All products from Spring Boot
   allProducts: any[] = [];
@@ -35,13 +35,27 @@ export class Product implements OnInit {
     this.loadProducts();
   }
 
-  // GET /api/products — load all products from Spring Boot
-  loadProducts() {
-    this.http.get<any[]>('http://localhost:8080/api/products')
+  // GET /api/products — load products from Spring Boot, optionally filtered by category
+  loadProducts(category: string = 'All') {
+    let url = 'http://localhost:8080/api/products';
+    if (category !== 'All') {
+      url += '?category=' + category;
+    }
+
+    this.http.get<any[]>(url)
       .subscribe(
         (res) => {
           this.allProducts = res;
-          this.filteredProducts = res; // show all by default
+          
+          // Apply local text and price filtering, since category was already handled by Spring Boot
+          this.filteredProducts = res.filter(p => {
+            const priceMatch = p.price <= this.maxPrice;
+            const searchMatch =
+              p.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+              p.category.toLowerCase().includes(this.searchTerm.toLowerCase());
+            
+            return priceMatch && searchMatch;
+          });
         },
         (err) => {
           console.error('Failed to load products', err);
@@ -49,36 +63,23 @@ export class Product implements OnInit {
       );
   }
 
-  // Filter products by category, price and search term
+  // Filter products by category, price and search term locally (for price/search)
   applyFilters() {
-    this.filteredProducts = this.allProducts.filter(p => {
-
-      const categoryMatch =
-        this.selectedCategory === 'All' ||
-        p.category === this.selectedCategory;
-
-      const priceMatch = p.price <= this.maxPrice;
-
-      const searchMatch =
-        p.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        p.category.toLowerCase().includes(this.searchTerm.toLowerCase());
-
-      return categoryMatch && priceMatch && searchMatch;
-    });
+    this.loadProducts(this.selectedCategory);
   }
 
   // Filter by category button click
   filterByCategory(category: string) {
     this.selectedCategory = category;
-    this.applyFilters();
+    this.loadProducts(category); // Call the backend with the new RequestParam!
   }
 
   // Reset all filters
   clearFilters() {
-    this.searchTerm = '';
+    this.searchTerm       = '';
     this.selectedCategory = 'All';
-    this.maxPrice = 200;
-    this.applyFilters();
+    this.maxPrice         = 200;
+    this.loadProducts('All');
   }
 
   // POST /api/cart — add product to cart in Spring Boot

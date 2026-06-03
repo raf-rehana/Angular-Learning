@@ -17,13 +17,13 @@
           <!-- No action/method because login needs a redirect via Angular -->
           <form>
 
-            <!-- Username -->
+            <!-- Email -->
             <div class="mb-3">
-              <label class="form-label fw-semibold">Username</label>
+              <label class="form-label fw-semibold">Email</label>
               <input id="username"
                      type="text"
                      class="form-control form-control-lg"
-                     placeholder="Enter username">
+                     placeholder="Enter registered email">
             </div>
 
             <!-- Password -->
@@ -42,11 +42,13 @@
               Login
             </button>
 
-            <!-- Register Link -->
-            <p class="text-center mt-3 mb-0">
-              Don't have an account?
-              <a routerLink="/register">Create one</a>
-            </p>
+            <!-- Register Button -->
+            <div class="mt-4">
+              <p class="text-center mb-2 fw-semibold">Don't have an account?</p>
+              <a routerLink="/registration" class="btn btn-lavender btn-lg w-100 fw-bold">
+                Register
+              </a>
+            </div>
 
           </form>
 
