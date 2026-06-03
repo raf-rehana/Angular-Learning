@@ -14,7 +14,6 @@ export class Login {
   constructor(private http: HttpClient, private router: Router) {}
 
   login() {
-    // Get values directly from the form inputs by their name
     const username = (document.getElementById('username') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
 

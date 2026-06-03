@@ -10,5 +10,4 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.css'
 })
 export class Home {
-  // Keeping it super easy! No complex API calls needed here anymore.
 }
