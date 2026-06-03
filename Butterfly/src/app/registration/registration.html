@@ -13,19 +13,14 @@
         <!-- Body -->
         <div class="card-body p-4">
 
-          <!--
-            action  → sends data to Spring Boot backend
-            method  → POST sends data privately
-            No Angular needed — browser handles everything!
-          -->
-          <form action="http://localhost:8080/api/registration" method="POST">
+          <form (ngSubmit)="onRegister(fn.value, ln.value, ph.value, em.value, pw.value, cpw.value)">
 
             <div class="row g-3">
 
               <!-- First Name -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">First Name</label>
-                <input name="firstName"
+                <input #fn name="firstName"
                        type="text"
                        class="form-control form-control-lg"
                        placeholder="Enter first name">
@@ -34,7 +29,7 @@
               <!-- Last Name -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Last Name</label>
-                <input name="lastName"
+                <input #ln name="lastName"
                        type="text"
                        class="form-control form-control-lg"
                        placeholder="Enter last name">
@@ -43,7 +38,7 @@
               <!-- Phone -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Phone Number</label>
-                <input name="phone"
+                <input #ph name="phone"
                        type="text"
                        class="form-control form-control-lg"
                        placeholder="Enter phone number">
@@ -52,7 +47,7 @@
               <!-- Email -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Email</label>
-                <input name="email"
+                <input #em name="email"
                        type="email"
                        class="form-control form-control-lg"
                        placeholder="Enter email">
@@ -61,7 +56,7 @@
               <!-- Password -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Password</label>
-                <input name="password"
+                <input #pw name="password"
                        type="password"
                        class="form-control form-control-lg"
                        placeholder="Enter password">
@@ -70,7 +65,7 @@
               <!-- Confirm Password -->
               <div class="col-md-6">
                 <label class="form-label fw-semibold">Confirm Password</label>
-                <input name="confirmPassword"
+                <input #cpw name="confirmPassword"
                        type="password"
                        class="form-control form-control-lg"
                        placeholder="Re-enter password">

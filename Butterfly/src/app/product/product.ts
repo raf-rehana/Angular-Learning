@@ -1,11 +1,11 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './product.html',
   styleUrl: './product.css'
 })
@@ -16,6 +16,7 @@ export class Product implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    console.log('Product component initialized. Loading products...');
     this.loadProducts();
   }
 
@@ -23,10 +24,11 @@ export class Product implements OnInit {
     this.http.get<any[]>('http://localhost:8080/api/products')
       .subscribe(
         (res) => {
+          console.log('Successfully loaded products:', res);
           this.products = res;
         },
         (err) => {
-          console.log('Error loading products', err);
+          console.error('Error loading products from backend:', err);
         }
       );
   }

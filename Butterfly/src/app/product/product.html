@@ -16,13 +16,18 @@
       <div class="card h-100 border">
 
         <!-- Product Image -->
-        <img
-          [src]="product.image"
-          [alt]="product.name"
-          class="card-img-top"
-          style="height:200px; object-fit:cover;"
-          onerror="this.src='https://placehold.co/300x200/ede9f6/7c5cbf?text=Product'"
-        />
+        <div class="position-relative">
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+            class="card-img-top"
+            style="height:200px; object-fit:cover;"
+            onerror="this.src='https://placehold.co/300x200/ede9f6/7c5cbf?text=Product'"
+          />
+          <span *ngIf="product.badge" class="position-absolute top-0 start-0 m-2 badge" style="background-color: #7c5cbf; color: white;">
+            {{ product.badge }}
+          </span>
+        </div>
 
         <!-- Card Body -->
         <div class="card-body">
